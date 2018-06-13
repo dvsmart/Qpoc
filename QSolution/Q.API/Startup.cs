@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Autofac;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Q.Core.Interfaces;
 using Q.Infrastructure.Data;
+using System.Reflection;
+using System.Threading.Tasks;
 
 namespace Q.API
 {
@@ -20,7 +24,10 @@ namespace Q.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase($"sampleDb"));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]), ServiceLifetime.Singleton);
+
+            services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 
             services.AddMvc();
             services.AddSwaggerGen(c =>
@@ -30,10 +37,8 @@ namespace Q.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env,ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
 
             if (env.IsDevelopment())
             {
@@ -48,5 +53,6 @@ namespace Q.API
             });
             app.UseMvc();
         }
+
     }
 }
