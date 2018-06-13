@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Q.Core.Security
+namespace Q.Core.Services
 {
-    class Security
+    public class TaskService
     {
     }
 }
