@@ -32,7 +32,7 @@ namespace Q.API
             services.AddMvc();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info{ Title = "Sample API", Version = "v1", Description="My Sample ASP.NET Core Web API" });
+                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "Sample API", Version = "v1", Description = "My Sample ASP.NET Core Web API" });
             });
         }
 
@@ -44,6 +44,9 @@ namespace Q.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200", "").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
             app.UseSwagger();
             app.UseCookiePolicy();
             app.UseSwaggerUI(c =>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Q.API.Filters;
@@ -44,7 +45,9 @@ namespace Q.API.Controllers
             var todoItem = new Task()
             {
                 Name = item.Name,
-                Description = item.Description
+                Description = item.Description,
+                CreatedOn = DateTime.Now,
+                CreatedBy = 1
             };
             _taskRepository.Add(todoItem);
             return Ok(TaskModel.ReturnTaskModel(todoItem));
@@ -60,6 +63,8 @@ namespace Q.API.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var task = _taskRepository.GetById(id);
+            _taskRepository.Delete(task);
         }
 
     }
