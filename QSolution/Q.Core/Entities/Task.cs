@@ -13,5 +13,13 @@ namespace Q.Core.Entities
         public DateTime CreatedOn { get; set; }
 
         public int CreatedBy { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public DateTime DueDate { get; set; }
+
+        public int Status { get; set; }
+
+        public int Priority { get; set; }
     }
 }

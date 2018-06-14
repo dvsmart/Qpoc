@@ -47,7 +47,11 @@ namespace Q.API.Controllers
                 Name = item.Name,
                 Description = item.Description,
                 CreatedOn = DateTime.Now,
-                CreatedBy = 1
+                CreatedBy = 1,
+                StartDate = item.StartDate,
+                DueDate = item.DueDate,
+                Status = EnumUtil.GetEnumFromString<TaskStatus>(item.Status),
+                Priority = EnumUtil.GetEnumFromString<Priority>(item.Priority)
             };
             _taskRepository.Add(todoItem);
             return Ok(TaskModel.ReturnTaskModel(todoItem));
