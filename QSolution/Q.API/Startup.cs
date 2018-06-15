@@ -24,7 +24,7 @@ namespace Q.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]), ServiceLifetime.Singleton);
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]), ServiceLifetime.Transient);
 
             services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));

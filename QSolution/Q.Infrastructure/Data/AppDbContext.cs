@@ -15,6 +15,10 @@ namespace Q.Infrastructure.Data
 
         public DbSet<Task> Tasks { get; set; }
 
+        public DbSet<MenuGroup> MenuGroups { get; set; }
+
+        public DbSet<MenuItem> MenuItems { get; set; }
+ 
         public override int SaveChanges()
         {
             return base.SaveChanges();

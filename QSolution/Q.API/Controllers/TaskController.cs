@@ -25,7 +25,7 @@ namespace Q.API.Controllers
         [HttpGet]
         public IActionResult List()
         {
-            var items = _taskRepository.List()
+            var items = _taskRepository.List().OrderByDescending(x=>x.CreatedOn)
                             .Select(item => TaskModel.ReturnTaskModel(item));
             return Ok(items);
         }
