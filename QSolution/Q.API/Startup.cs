@@ -1,14 +1,18 @@
 ﻿using Autofac;
+using Autofac.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Q.API.Filters;
 using Q.Core.Interfaces;
+using Q.Core.shared;
 using Q.Infrastructure.Data;
 using System.Reflection;
 using System.Threading.Tasks;
+
 
 namespace Q.API
 {
@@ -24,16 +28,26 @@ namespace Q.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]), ServiceLifetime.Transient);
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(ValidateModelAttribute));
+            });
 
-            services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
-            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            //services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]), ServiceLifetime.Transient);
 
-            services.AddMvc();
+            //services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
+            //services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+
+            //services.AddMvc();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "Sample API", Version = "v1", Description = "My Sample ASP.NET Core Web API" });
             });
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new ConfigurationModule(Configuration));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,21 @@
+﻿{
+  "defaultAssembly": "Q.Infrastructure",
+  "modules": [
+    {
+      "type": "Q.Infrastructure.Modules.WebApiModule",
+      "properties": {
+      }
+    },
+    {
+      "type": "Q.Infrastructure.Modules.CoreModule",
+      "properties": {
+      }
+    },
+    {
+      "type": "Q.Infrastructure.Modules.InfrastructureModule",
+      "properties": {
+        "SQLServerConnectionString": "Server=AKDEV19\\SQLEXPRESS;Database=QPocDb;Trusted_Connection=True;MultipleActiveResultSets=true;integrated security=True"
+      }
+    }
+  ]
+}

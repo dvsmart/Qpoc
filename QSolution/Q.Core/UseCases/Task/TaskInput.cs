@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Q.Core.Services
+namespace Q.Core.UseCases.Task
 {
-    public class TaskService
+    public class TaskInput
     {
     }
 }
