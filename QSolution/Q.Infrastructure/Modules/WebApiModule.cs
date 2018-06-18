@@ -14,6 +14,7 @@ namespace Q.Infrastructure.Modules
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                 .AsClosedTypesOf(typeof(IOutputBoundary<>))
                 .InstancePerLifetimeScope();
+
         }
     }
 }

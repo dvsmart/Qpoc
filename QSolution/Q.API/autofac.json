@@ -14,7 +14,7 @@
     {
       "type": "Q.Infrastructure.Modules.InfrastructureModule",
       "properties": {
-        "SQLServerConnectionString": "Server=AKDEV19\\SQLEXPRESS;Database=QPocDb;Trusted_Connection=True;MultipleActiveResultSets=true;integrated security=True"
+        "SQLServerConnectionString": "Server=DHAKSHY-VIJAY\\SQLEXPRESS;Database=QPocDb;Trusted_Connection=True;MultipleActiveResultSets=true;integrated security=True"
       }
     }
   ]

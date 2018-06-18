@@ -33,7 +33,7 @@ namespace Q.API
                 options.Filters.Add(typeof(ValidateModelAttribute));
             });
 
-            //services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]), ServiceLifetime.Transient);
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]), ServiceLifetime.Transient);
 
             //services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
             //services.AddTransient(typeof(IRepository<>), typeof(Repository<>));

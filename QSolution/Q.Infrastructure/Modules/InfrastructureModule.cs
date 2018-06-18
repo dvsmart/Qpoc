@@ -16,10 +16,12 @@ namespace Q.Infrastructure.Modules
 
             builder.RegisterType<AppDbContext>()
               .WithParameter(new TypedParameter(typeof(DbContextOptions), optionsBuilder.Options))
-              .SingleInstance();
+              .InstancePerLifetimeScope();
            
             builder.RegisterAssemblyTypes(typeof(OutputConverter).Assembly)
                 .AsImplementedInterfaces().InstancePerLifetimeScope();
+
+            
         }
     }
 }

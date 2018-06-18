@@ -42,7 +42,7 @@ namespace Q.API.Controllers.Task
                 });
             }
 
-            ViewModel = new ObjectResult(tasks);
+            ViewModel = new OkObjectResult(tasks);
         }
     }
 }

@@ -12,6 +12,10 @@ namespace Q.Infrastructure.Data
         {
             
         }
+        public AppDbContext()
+        {
+
+        }
 
         public DbSet<Task> Tasks { get; set; }
 

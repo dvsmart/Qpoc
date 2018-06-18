@@ -4,12 +4,14 @@ namespace Q.Core.UseCases.Task.GetTasks
 {
     using Q.Core.Interfaces;
     using Q.Core.shared;
+    using System.Collections.Generic;
+
     public class GetTasksInteractor : IInputBoundary<TaskInput>
     {
         private readonly ITaskRepository _taskRepository;
         private readonly IOutputConverter _outputConverter;
-        private readonly IOutputBoundary<TaskOutput> _outputBoundary;
-        public GetTasksInteractor(ITaskRepository taskRepository, IOutputBoundary<TaskOutput> outputBoundary, IOutputConverter outputConverter)
+        private readonly IOutputBoundary<List<TaskOutput>> _outputBoundary;
+        public GetTasksInteractor(ITaskRepository taskRepository, IOutputBoundary<List<TaskOutput>> outputBoundary, IOutputConverter outputConverter)
         {
             _taskRepository = taskRepository;
             _outputConverter = outputConverter;
@@ -25,7 +27,7 @@ namespace Q.Core.UseCases.Task.GetTasks
         {
             var tasks = await _taskRepository.GetTasks();
 
-            TaskOutput output = _outputConverter.Map<TaskOutput>(tasks);
+            var output = _outputConverter.Map<List<TaskOutput>>(tasks);
             _outputBoundary.Populate(output);
         }
         

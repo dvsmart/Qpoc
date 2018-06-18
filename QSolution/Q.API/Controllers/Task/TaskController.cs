@@ -32,8 +32,8 @@ namespace Q.API.Controllers.Task
         public async Task<IActionResult> List()
         {
             //var items = _taskRepository.List().OrderByDescending(x=>x.CreatedOn).Select(item => TaskModel.ReturnTaskModel(item));
-            await this._getTasks.Process(new TaskInput());
-            return Ok(this._taskPresenter.ViewModel);
+            await _getTasks.Process(new TaskInput());
+            return Ok(_taskPresenter.ViewModel);
         }
 
         //// GET: api/Tasks/5

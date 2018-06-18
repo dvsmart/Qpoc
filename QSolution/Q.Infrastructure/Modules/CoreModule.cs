@@ -5,6 +5,7 @@ using Autofac;
 using Q.Core.Interfaces;
 using Q.Core.shared;
 using Q.Core.UseCases.Task;
+using Q.Core.UseCases.Task.GetTasks;
 using Q.Infrastructure.Repositories;
 
 namespace Q.Infrastructure.Modules
