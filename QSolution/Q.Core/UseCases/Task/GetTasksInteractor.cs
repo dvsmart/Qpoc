@@ -1,17 +1,17 @@
 ﻿
 
-namespace Q.Core.UseCases.Task.GetTasks
+namespace Q.Core.UseCases.Task
 {
-    using Q.Core.Interfaces;
+    using Q.Core.Contracts;
     using Q.Core.shared;
     using System.Collections.Generic;
 
-    public class GetTasksInteractor : IInputBoundary<TaskInput>
+    public class GetTasksInteractor : IInputBoundary<TaskDto>
     {
         private readonly ITaskRepository _taskRepository;
         private readonly IOutputConverter _outputConverter;
-        private readonly IOutputBoundary<List<TaskOutput>> _outputBoundary;
-        public GetTasksInteractor(ITaskRepository taskRepository, IOutputBoundary<List<TaskOutput>> outputBoundary, IOutputConverter outputConverter)
+        private readonly IOutputBoundary<List<TaskDto>> _outputBoundary;
+        public GetTasksInteractor(ITaskRepository taskRepository, IOutputBoundary<List<TaskDto>> outputBoundary, IOutputConverter outputConverter)
         {
             _taskRepository = taskRepository;
             _outputConverter = outputConverter;
@@ -23,11 +23,11 @@ namespace Q.Core.UseCases.Task.GetTasks
 
         }
 
-        public async System.Threading.Tasks.Task Process(TaskInput input)
+        public async System.Threading.Tasks.Task Process(TaskDto input)
         {
             var tasks = await _taskRepository.GetTasks();
 
-            var output = _outputConverter.Map<List<TaskOutput>>(tasks);
+            var output = _outputConverter.Map<List<TaskDto>>(tasks);
             _outputBoundary.Populate(output);
         }
         

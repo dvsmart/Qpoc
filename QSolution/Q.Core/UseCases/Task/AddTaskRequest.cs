@@ -4,15 +4,10 @@ using System.Text;
 
 namespace Q.Core.UseCases.Task
 {
-    public class TaskOutput
+    public class AddTaskRequest
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-
-        public DateTime CreatedOn { get; set; }
-
-        public int CreatedBy { get; set; }
 
         public DateTime StartDate { get; set; }
 
@@ -21,10 +16,5 @@ namespace Q.Core.UseCases.Task
         public int Status { get; set; }
 
         public int Priority { get; set; }
-
-        public TaskOutput()
-        {
-
-        }
     }
 }

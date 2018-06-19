@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Q.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Q.Entities;
 
 namespace Q.Infrastructure.Data
 {

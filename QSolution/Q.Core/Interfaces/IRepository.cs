@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Q.Core.Interfaces
 {
-    public interface IRepository<T> where T : BaseEntity
+    public interface IRepository<T> where T : class
     {
         T GetById(int id);
         List<T> List();

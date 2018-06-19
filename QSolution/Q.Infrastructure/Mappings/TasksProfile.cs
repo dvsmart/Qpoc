@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
-using Q.Core.Entities;
 using Q.Core.UseCases.Task;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Q.Entities;
 
 namespace Q.Infrastructure.Mappings
 {
@@ -11,7 +8,9 @@ namespace Q.Infrastructure.Mappings
     {
         public TasksProfile()
         {
-            CreateMap<Task, TaskOutput>();
+            CreateMap<Task, TaskDto>();
+            CreateMap<AddTaskRequest, Task>();
         }
     }
+
 }

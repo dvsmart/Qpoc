@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Q.Core\Q.Core.csproj" />
+    <ProjectReference Include="..\Q.Entities\Q.Entities.csproj" />
   </ItemGroup>
 
   <ItemGroup>

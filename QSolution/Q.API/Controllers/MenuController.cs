@@ -4,8 +4,8 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Q.API.Filters;
 using Q.API.Models;
-using Q.Core.Entities;
 using Q.Core.Interfaces;
+using Q.Entities;
 
 namespace Q.API.Controllers
 {

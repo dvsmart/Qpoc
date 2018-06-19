@@ -1,8 +1,5 @@
-﻿using Q.Core.Entities;
-using System;
+﻿using Q.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Q.API.Models
 {

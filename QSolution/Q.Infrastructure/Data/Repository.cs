@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Q.Infrastructure.Data
 {
-    public class Repository<T> : IRepository<T> where T : BaseEntity
+    public class Repository<T> : IRepository<T> where T : class
     {
         private readonly AppDbContext _dbContext;
 
@@ -33,7 +33,7 @@ namespace Q.Infrastructure.Data
 
         public T GetById(int id)
         {
-            return _dbContext.Set<T>().SingleOrDefault(e => e.Id == id);
+            return _dbContext.Set<T>().Find(id);
         }
 
         public List<T> List()

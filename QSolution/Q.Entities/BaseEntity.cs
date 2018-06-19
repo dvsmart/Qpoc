@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Q.Core.shared
+namespace Q.Entities
 {
     public abstract class BaseEntity
     {
